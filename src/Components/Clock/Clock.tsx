@@ -29,7 +29,6 @@ const Clock: React.FC = () => {
             <button onClick={start}>Start</button>
             <button onClick={stop}>Stop</button>
             <button onClick={reset}>Reset</button>
-
         </div>
     );
 };
