@@ -2,13 +2,15 @@ import { useState, useEffect, FC } from "react";
 import CalculatorKey from "./CalculatorButton";
 import "./Calculator.css";
 
+const DEFAULT_VALUE  = "";
+
 const Calculator: FC = () => {
     const [isButtonDisabled, setButtonDisabled] = useState<boolean>(false);
     const [isCalcFinished, setCalcFinished] = useState<boolean>(true);
-    const [prevDisplay, setPrevDisplay] = useState<string>("");
-    const [prevValue, setPrevValue] = useState<string>("");
+    const [prevDisplay, setPrevDisplay] = useState<string>(DEFAULT_VALUE);
+    const [prevValue, setPrevValue] = useState<string>(DEFAULT_VALUE);
     const [nextValue, setNextValue] = useState<string>("0");
-    const [operator, setOperator] = useState<string>("");
+    const [operator, setOperator] = useState<string>(DEFAULT_VALUE);
 
     const CalculatorOperations = {
         "/": (firstValue: number, secondValue: number) => firstValue / secondValue,
@@ -20,7 +22,7 @@ const Calculator: FC = () => {
 
     const performOperation = (new_operator: string) => {
         const temp = CalculatorOperations[operator as keyof typeof CalculatorOperations](Number(prevValue), Number(nextValue));
-        setOperator("");
+        setOperator(DEFAULT_VALUE);
         setNextValue(String(temp));
         setPrevValue(String(temp));
         setPrevDisplay(new_operator === '=' ? prevValue + operator + nextValue : String(temp));
@@ -38,7 +40,7 @@ const Calculator: FC = () => {
 
     const percentage = () => {
         setNextValue(String(Number(nextValue) / 100));
-        if (prevValue && nextValue === "") {
+        if (prevValue && nextValue === DEFAULT_VALUE) {
             setPrevValue(String(Number(prevValue) / 100));
             setPrevDisplay(String(Number(prevValue) / 100));
         }
@@ -51,9 +53,9 @@ const Calculator: FC = () => {
     const clearData = () => {
         setCalcFinished(true);
         setNextValue("0");
-        setPrevValue("");
-        setPrevDisplay("");
-        setOperator("");
+        setPrevValue(DEFAULT_VALUE);
+        setPrevDisplay(DEFAULT_VALUE);
+        setOperator(DEFAULT_VALUE);
     };
 
     const backspace = () => {
@@ -72,7 +74,7 @@ const Calculator: FC = () => {
         if (isButtonDisabled) setButtonDisabled(false);
         if (value in CalculatorOperations) {
             setCalcFinished(true);
-            if (operator === "" || operator === '=') {
+            if (operator === DEFAULT_VALUE || operator === '=') {
                 setOperator(value);
                 setPrevValue(nextValue);
                 setPrevDisplay(nextValue);
