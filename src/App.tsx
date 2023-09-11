@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Clock } from './Components/Clock';
-
+import { Calculator, Clock } from './Components'
 
 function App() {
   return (
     <div>
       <Clock />
+      <Calculator />
     </div>
   );
 }

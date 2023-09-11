@@ -1,12 +1,11 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+import * as React from "react";
 
 const Clock: React.FC = () => {
 
-    const [count, setCount] = useState<number>(0);
-    const [isRunning, setIsRunning] = useState<boolean>(false);
+    const [count, setCount] = React.useState<number>(0);
+    const [isRunning, setIsRunning] = React.useState<boolean>(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (isRunning) {
             const interval = setInterval(() => {
                 setCount(prevCount => prevCount + 1);

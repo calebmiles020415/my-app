@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .calc-btn {
+    width: 25%;
+    height: 55px;
+    border: 1px solid #E6E6E6;
+    text-align: center;
+  }
+  
+  .calc-btn:hover {
+    background-color: #D1D1D1;
+  }
+  
+  .calc-btn:disabled {
+    background-color: #F0F0F0;
+  }
+  
+  .bg-white {
+    background-color: white;
+    font-weight: bold;
+  }
+  
+  .bg-black {
+    background-color: #F0F0F0;
+  }

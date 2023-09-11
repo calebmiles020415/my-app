@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    border-color: #E7E7E7;
+    cursor: pointer;
+  }
+  
+  .calculator {
+    margin: 10px;
+    width: 325px;
+    border: 1px solid;
+  }
+  
+  .calculator-keypad {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .calculator-input {
+    padding: 10px;
+    background-color: #E6E6E6;
+  }
+  
+  .pre-result {
+    height: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 17px;
+  }
+  
+  .result {
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 45px;
+  }
