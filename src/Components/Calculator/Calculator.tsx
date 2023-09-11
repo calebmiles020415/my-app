@@ -1,14 +1,14 @@
-import * as React from "react";
+import { useState, useEffect, FC } from "react";
 import CalculatorKey from "./CalculatorButton";
 import "./Calculator.css";
 
-const Calculator: React.FC = () => {
-    const [isButtonDisabled, setButtonDisabled] = React.useState<boolean>(false);
-    const [isCalcFinished, setCalcFinished] = React.useState<boolean>(true);
-    const [prevDisplay, setPrevDisplay] = React.useState<string>("");
-    const [prevValue, setPrevValue] = React.useState<string>("");
-    const [nextValue, setNextValue] = React.useState<string>("0");
-    const [operator, setOperator] = React.useState<string>("");
+const Calculator: FC = () => {
+    const [isButtonDisabled, setButtonDisabled] = useState<boolean>(false);
+    const [isCalcFinished, setCalcFinished] = useState<boolean>(true);
+    const [prevDisplay, setPrevDisplay] = useState<string>("");
+    const [prevValue, setPrevValue] = useState<string>("");
+    const [nextValue, setNextValue] = useState<string>("0");
+    const [operator, setOperator] = useState<string>("");
 
     const CalculatorOperations = {
         "/": (firstValue: number, secondValue: number) => firstValue / secondValue,
@@ -100,6 +100,8 @@ const Calculator: React.FC = () => {
             case "Back":
                 backspace();
                 break;
+            default:
+                break;
         }
     };
 
@@ -116,30 +118,30 @@ const Calculator: React.FC = () => {
             </div>
             <div className="calculator-keypad">
                 {/* First Row */}
-                <CalculatorKey keyValue={"c"} className="calc-btn bg-black" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"%"} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"/"} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"Back"} className="calc-btn bg-black" onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"c"} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"%"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"/"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"Back"} onKeyClick={onKeyClick} />
                 {/* Second Row */}
-                <CalculatorKey keyValue={7} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={8} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={9} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"*"} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={7} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={8} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={9} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"*"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
                 {/* Third Row */}
-                <CalculatorKey keyValue={4} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={5} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={6} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"-"} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={4} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={5} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={6} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"-"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
                 {/* Fourth Row */}
-                <CalculatorKey keyValue={1} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={2} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={3} className="calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"+"} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={1} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={2} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={3} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"+"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
                 {/* Fifth Row */}
-                <CalculatorKey keyValue={"\xB1"} className="calc-btn bg-white" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={0} className="key-zero calc-btn bg-white" onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"."} className="key-dot calc-btn bg-white" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
-                <CalculatorKey keyValue={"="} className="calc-btn bg-black" isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"\xB1"} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={0} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"."} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
+                <CalculatorKey keyValue={"="} isDisable={isButtonDisabled} onKeyClick={onKeyClick} />
             </div>
         </div>
     );

@@ -1,11 +1,10 @@
-import * as React from "react";
+import { FC, useState, useEffect } from "react";
 
-const Clock: React.FC = () => {
+const Clock: FC = () => {
+    const [count, setCount] = useState<number>(0);
+    const [isRunning, setIsRunning] = useState<boolean>(false);
 
-    const [count, setCount] = React.useState<number>(0);
-    const [isRunning, setIsRunning] = React.useState<boolean>(false);
-
-    React.useEffect(() => {
+    useEffect(() => {
         if (isRunning) {
             const interval = setInterval(() => {
                 setCount(prevCount => prevCount + 1);
@@ -20,10 +19,22 @@ const Clock: React.FC = () => {
 
     const reset = () => setCount(0);
 
+    const showClock = () => {
+        const hour = Math.floor(count / 3600);
+        const min = Math.floor(count / 60) % 60;
+        const sec = count % 60;
+
+        return (
+            <div>
+                {`${hour.toString().padStart(2, '0')} : ${min.toString().padStart(2, '0')} : ${sec.toString().padStart(2, '0')}`}
+            </div>
+        );
+    }
+
     return (
         <div>
             <div>
-                {Math.floor(count / 3600)} : {Math.floor(count / 60) % 60} : {count % 60}
+                {showClock()}
             </div>
             <button onClick={start}>Start</button>
             <button onClick={stop}>Stop</button>
