@@ -10,7 +10,7 @@ interface CalculatorKeyProps {
 const CalculatorKey: FC<CalculatorKeyProps> = ({ keyValue, onKeyClick, isDisable }) => {
     return (
         <button className={`calc-btn ${typeof (keyValue) === 'number' ? 'bg-white' : 'bg-black'}`} onClick={() => onKeyClick(keyValue)} disabled={isDisable}>
-            {keyValue}
+            {keyValue }
         </button>
     );
 }
